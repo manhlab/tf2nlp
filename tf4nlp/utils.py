@@ -16,7 +16,7 @@ def quick_encode(df,tokenizer, maxlen=100):
     
     return np.array(tokens['input_ids'])
 
-def create_dataset(X,y ,val=False, batch_size, AUTO):
+def create_dataset(X ,y ,val, batch_size, AUTO):
     dataset = tf.data.Dataset.from_tensor_slices((X,y)).shuffle(len(X))
     if not val:
         dataset = dataset.repeat().batch(batch_size).prefetch(AUTO)
